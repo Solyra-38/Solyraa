@@ -1,0 +1,143 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Solyra – Yazarın Okyanusu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#cde4f0;--bg2:#b3d3e6;--paper:#fbfaf4;--tx:#1f3f4c;--mu:#58798a;--bd:#9fc4d8;--oc:#2f7fa8;--tl:#2fa89f;--sh:0 6px 18px rgba(31,95,122,.18);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{height:100%}body{margin:0;min-height:100%;color:var(--tx);font:16px/1.65 Nunito,system-ui,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));background-attachment:fixed;overflow-x:hidden}
+body.home{--tx:#e8f4f4;--mu:#a9cbd0;--paper:rgba(255,255,255,.08);--bd:rgba(255,255,255,.2);--oc:#86c9e6;--tl:#5fd3c8;--sh:0 8px 22px rgba(0,0,0,.25);background:linear-gradient(180deg,#2a7088 0%,#1b5368 32%,#124050 68%,#0c303d 100%);background-attachment:fixed}
+body.home .card,body.home .bk,body.home .btn{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+body.read{background:#d3e7f2}
+h1,h2,h3,.ser{font-family:"Cormorant Garamond",Georgia,serif}
+h2{font-size:30px;margin:26px 0 12px;display:flex;align-items:center;gap:12px}h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--bd),transparent)}
+#fx,#rays{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}body.read #fx,body.read #rays,#rays{display:none}body.home #rays{display:block;background:repeating-linear-gradient(104deg,rgba(255,255,255,.07) 0 36px,transparent 36px 130px);-webkit-mask-image:linear-gradient(#000,transparent 65%);mask-image:linear-gradient(#000,transparent 65%);animation:ray 14s ease-in-out infinite alternate}
+@keyframes ray{from{opacity:.4;transform:translateX(-20px)}to{opacity:1;transform:translateX(20px)}}
+.bb{position:absolute;bottom:-30px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.7),rgba(255,255,255,.12) 55%,transparent 70%);border:1px solid rgba(255,255,255,.4);animation:rise linear infinite}
+@keyframes rise{0%{opacity:.8}to{transform:translate(26px,-115vh);opacity:.1}}
+.fsh{position:absolute;left:0;aspect-ratio:11/5;animation:cross linear infinite}.fsh.r{animation-name:crossr}.fsh.r svg{transform:scaleX(-1)}body:not(.home) .fsh{display:none}
+@keyframes cross{from{transform:translateX(-180px)}to{transform:translateX(calc(100vw + 180px))}}@keyframes crossr{from{transform:translateX(calc(100vw + 180px))}to{transform:translateX(-180px)}}
+.fb2{width:100%;height:100%;animation:bob 5s ease-in-out infinite alternate}@keyframes bob{from{transform:translateY(-10px) rotate(-2deg)}to{transform:translateY(12px) rotate(2deg)}}
+.fb2 svg{display:block;width:100%;height:100%}.r1,.tl,.pf{transform-box:fill-box;transform-origin:100% 50%;animation:w1 var(--t,.8s) ease-in-out infinite alternate}.tl{animation-name:w2;animation-delay:calc(var(--t,.8s)*-1.5)}.pf{animation:pf .5s ease-in-out infinite alternate}@keyframes w1{from{transform:rotate(-7deg)}to{transform:rotate(7deg)}}@keyframes w2{from{transform:rotate(-17deg)}to{transform:rotate(17deg)}}@keyframes pf{from{transform:rotate(-10deg)}to{transform:rotate(14deg)}}
+#app{position:relative;z-index:1}
+nav{display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto;padding:12px 18px}nav b{font:700 26px "Cormorant Garamond",serif;letter-spacing:2px;cursor:pointer}
+.btn{border:1px solid var(--bd);border-radius:999px;padding:8px 18px;background:var(--paper);color:var(--tx);box-shadow:var(--sh);font:inherit;cursor:pointer;transition:background .3s,transform .3s}.btn:hover{background:rgba(95,211,200,.25);transform:translateY(-2px)}
+.btn.p{background:linear-gradient(135deg,var(--oc),var(--tl));color:#0b2a35;border:0;font-weight:600}
+.hero{text-align:center;padding:30px 20px 50px}
+.logo{width:96px;height:96px;border-radius:50%;margin:6px auto 12px;display:grid;place-items:center;background:var(--paper);border:1.5px solid var(--bd);box-shadow:0 0 30px rgba(134,201,230,.3);font:500 52px "Cormorant Garamond",serif;color:var(--oc)}
+.hero h1{font-size:60px;margin:0;letter-spacing:6px;color:var(--oc);text-shadow:0 0 24px rgba(134,201,230,.35)}.sub{font:italic 500 22px "Cormorant Garamond",serif;margin:0;color:var(--mu)}.bio{max-width:520px;margin:14px auto}
+.tags span{display:inline-block;border:1px solid var(--bd);border-radius:999px;padding:2px 14px;margin:3px;font-size:14px;color:var(--mu)}
+.sec{max-width:900px;margin:0 auto;padding:4px 18px}
+.card{background:var(--paper);border-radius:16px;padding:12px 16px;margin-bottom:10px;box-shadow:var(--sh);border:1px solid var(--bd)}
+.shelfbg{border-radius:26px;padding:6px 18px 24px;background:rgba(255,255,255,.05);border:1px solid var(--bd)}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:18px}
+.bk{cursor:pointer;background:var(--paper);border:1px solid var(--bd);border-radius:18px;padding:10px;box-shadow:var(--sh);transition:transform .4s,box-shadow .4s}.bk:hover{transform:translateY(-7px);box-shadow:0 16px 30px rgba(0,0,0,.3)}
+.cover{aspect-ratio:2/3;border-radius:4px 10px 10px 4px;display:flex;align-items:flex-end;padding:12px;color:#fff;font:700 21px/1.1 "Cormorant Garamond",serif;text-shadow:0 1px 4px rgba(0,0,0,.35);border-left:5px solid rgba(255,255,255,.3)}
+.bk small{display:block;margin-top:8px;color:var(--mu)}.st{font-size:12px;padding:1px 10px;border-radius:12px;background:var(--tl);color:#08303a;font-weight:600}
+.back{background:none;border:0;color:var(--oc);font:inherit;font-weight:600;cursor:pointer;padding:0;margin:8px 0}
+.chars{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.fc{perspective:900px;height:230px;cursor:pointer}.fi{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}.fc.on .fi{transform:rotateY(180deg)}
+.fa,.fb{position:absolute;inset:0;border-radius:18px;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:12px;overflow:auto;border:1px solid rgba(255,255,255,.35);box-shadow:var(--sh)}
+.fa{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;color:#fff;text-align:center;font:700 22px "Cormorant Garamond",serif}.fa .m{margin:auto 0;font-size:72px;font-weight:500;opacity:.85}
+.fb{transform:rotateY(180deg);background:#fbfaf4;color:#1f3f4c;border-color:var(--tl);font-size:13.5px;line-height:1.5}.fb b{color:#2f7fa8;font-size:16px}
+.ch{display:flex;gap:12px;align-items:center;cursor:pointer;transition:transform .3s}.ch:hover{transform:translateX(5px)}.ch .n{font:700 26px "Cormorant Garamond",serif;color:var(--oc);min-width:34px}
+.empty{text-align:center;color:var(--mu);padding:18px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
+.rd{background:#fbfaf4;color:#1f3f4c;border-radius:18px;padding:22px 20px;box-shadow:var(--sh)}#txt p{margin:0 0 1.15em}
+.q{border-left:3px solid var(--tl);padding-left:10px;color:var(--mu);font-style:italic;margin:4px 0}
+.sea{position:relative;margin-top:60px;z-index:1}.seabed{position:relative;height:360px;overflow:hidden;background:linear-gradient(transparent,rgba(6,40,52,.6) 70%,rgba(5,30,40,.85))}
+.kc{position:absolute;left:0;bottom:0;width:100%;height:100%}
+
+.fbar{background:#06232d;color:#bfd9dc;text-align:center;padding:10px 16px 16px;font-size:14px}.fbar .btn{margin-left:8px;padding:4px 12px;font-size:13px;box-shadow:none}
+#tc{position:fixed;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+#sel{position:fixed;left:0;right:0;bottom:0;background:#fbfaf4;color:#1f3f4c;border-top:1px solid var(--bd);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));display:none;z-index:15}
+#sel input{width:100%;padding:10px 14px;border-radius:14px;border:1px solid #bcdae3;background:#fff;color:#1f3f4c;font:inherit;margin:8px 0}#sel .btn{color:#1f3f4c}#sel .btn.p{color:#0b2a35}
+#toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:#e8f4f4;color:#0c303d;padding:8px 16px;border-radius:20px;display:none;z-index:40;font-size:14px}
+.dr{position:fixed;width:10px;height:10px;margin:-5px;border:1.5px solid var(--tl);border-radius:50%;pointer-events:none;z-index:30;animation:dr .8s ease-out forwards}.dr.b{animation-name:drb}
+@keyframes dr{to{transform:scale(3);opacity:0}}@keyframes drb{to{transform:scale(6);opacity:0}}
+#wv{position:fixed;left:0;top:0;width:100%;z-index:25;pointer-events:none;transform:translateY(105vh)}#wv.on{animation:sw .95s ease-in-out}
+@keyframes sw{0%{transform:translateY(105vh)}42%,58%{transform:translateY(-60px)}to{transform:translateY(-130vh)}}
+#ld{position:fixed;inset:0;z-index:50;display:grid;place-content:center;background:linear-gradient(#2a7088,#0c303d);transition:opacity .7s;font:500 54px "Cormorant Garamond",serif;letter-spacing:8px;color:#86c9e6}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<pattern id="sc" width="6" height="5" patternUnits="userSpaceOnUse"><path d="M0 5Q3 0 6 5" stroke="rgba(255,255,255,.2)" fill="none"/></pattern><linearGradient id="fg" gradientUnits="userSpaceOnUse" x1="0" y1="4" x2="0" y2="46"><stop offset="0" stop-color="#1f4a63"/><stop offset=".55" stop-color="#7fa9b8"/><stop offset="1" stop-color="#e4eef0"/></linearGradient>
+<linearGradient id="kg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#143a2c"/><stop offset=".5" stop-color="#2d7653"/><stop offset="1" stop-color="#86c28c"/></linearGradient></defs></svg>
+<div id="rays"></div><div id="fx"></div><div id="app"></div><canvas id="tc"></canvas>
+<div id="sel"><div class="q" id="sq"></div><input id="si" placeholder="Bu kısım hakkında yorumun…"><button class="btn p" id="sg">Gönder</button> <button class="btn" id="sx">Kapat</button></div>
+<div id="toast"></div>
+<div id="wv"><svg viewBox="0 0 1200 60" preserveAspectRatio="none" style="display:block;width:100%;height:60px;margin-bottom:-1px"><path d="M0 30Q150 0 300 30T600 30T900 30T1200 30V60H0z" fill="#1f6b80"/></svg><div style="height:130vh;background:#1f6b80"></div></div>
+<div id="ld">SOLYRA</div>
+<script>
+const RM=matchMedia("(prefers-reduced-motion:reduce)").matches,$=s=>document.querySelector(s),app=$("#app");
+const FISH='<svg viewBox="0 -2 120 54"><g class="r1"><path d="M58 8C46 11 36 20 26 24V26C36 30 46 39 58 42z" fill="url(#fg)"/><path d="M58 8C46 11 36 20 26 24V26C36 30 46 39 58 42z" fill="url(#sc)"/><g class="tl"><path d="M27 25 5 4Q13 25 5 46z" fill="#2c5870"/><path d="M26 25 9 12M26 25 9 25M26 25 9 38" stroke="rgba(255,255,255,.18)" fill="none"/></g></g><path d="M58 8C72 3 94 8 108 23C110 25 110 26 108 27C94 42 72 47 58 42z" fill="url(#fg)"/><path d="M58 8C72 3 94 8 108 23C110 25 110 26 108 27C94 42 72 47 58 42z" fill="url(#sc)"/><path d="M60 7C68-2 86 0 92 6 80 6 70 7 60 8z" fill="#2c5870"/><path d="M66 3 66 8M74 1 74 7M82 1 82 6" stroke="rgba(255,255,255,.2)" fill="none"/><path d="M60 41Q66 50 76 44Q68 43 60 41z" fill="#4a7f95"/><g class="pf"><path d="M86 30Q78 39 70 37Q77 32 86 30z" fill="rgba(225,238,242,.75)"/></g><path d="M34 25Q66 21 102 25" stroke="rgba(255,255,255,.3)" fill="none"/><path d="M90 11Q84 25 90 40" stroke="rgba(0,0,0,.28)" fill="none"/><path d="M92 12Q87 25 92 39" stroke="rgba(255,255,255,.2)" fill="none"/><path d="M108 25.5 103 26.5" stroke="rgba(0,0,0,.45)"/><circle cx="99" cy="20" r="3.8" fill="#d8c27a"/><circle cx="99.4" cy="20" r="2.3" fill="#05090c"/><circle cx="100.2" cy="19.2" r=".8" fill="#fff"/></svg>';
+const B=[
+{id:1,t:"Gece Yarısı Mührü",g:"Fantastik",s:"Devam ediyor",c:"#1d5873,#58aab5",d:"Örnek tanıtım yazısı: Mühürlü bir şehirde, her gece yarısı kaybolan bir kapının peşine düşen genç bir kâtibin hikâyesi.",
+ch:[{n:"Aylin",a:19,k:"Meraklı, inatçı",r:"Baş karakter",c:"#1f5f7a,#4ba3b5"},{n:"Kael",a:27,k:"Gizemli, sadık",r:"Rehber",c:"#4b3f7a,#8a7fc0"},{n:"Mira",a:15,k:"Neşeli, cesur",r:"Yardımcı",c:"#1f6b5c,#5fb8a0"}],
+p:[{t:"Kapının Gölgesi",o:1,x:["Şehir uyurken saat kulesi on iki kez çaldı. Aylin pencereden dışarı baktığında sokağın ortasında, geçen gün orada olmayan bir kapı gördü.","Kapı usulca aralandı. İçeriden gelen ışık, kaldırım taşlarına altın bir harita çizdi.","Gitmemesi gerektiğini biliyordu. Ama bilmek ile yapmak arasındaki mesafe, o gece çok kısaydı."]},{t:"Mühürlü Sokak",o:1,x:["Sabah olduğunda kapı yoktu. Yalnızca duvarda silik bir mühür kalmıştı.","Kael, mührü parmağıyla izleyip fısıldadı: “Seni de seçmiş.”"]},{t:"Taslak bölüm",o:0,x:["Bu bölüm henüz yayımlanmadı."]}]},
+{id:2,t:"Yıldız Tozu",g:"Macera",s:"Yakında",c:"#4a4580,#7e8fc9",d:"Çok yakında.",ch:[],p:[]},
+{id:3,t:"Sessiz Liman",g:"Dram",s:"Tamamlandı",c:"#2a6b5e,#8cc4b0",d:"Örnek tamamlanmış kitap.",ch:[],p:[]}];
+const ANN=["Gece Yarısı Mührü’nün 2. bölümü yayında.","Yıldız Tozu çok yakında kitaplıkta."];
+let S={size:19,lh:1.8,serif:true},CM={},LK={},q="";
+const g=c=>`linear-gradient(160deg,${c.split(",")[0]},${c.split(",")[1]})`,R=(a,b)=>a+Math.random()*(b-a);
+const esc=s=>s.replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+function toast(m){const t=$("#toast");t.textContent=m;t.style.display="block";setTimeout(()=>t.style.display="none",2200)}
+function kelpStart(){const c=document.querySelector(".kc");if(!c)return;const x=c.getContext("2d"),dp=Math.min(devicePixelRatio||1,2),W=c.clientWidth,H=c.clientHeight;c.width=W*dp;c.height=H*dp;x.scale(dp,dp);
+const CL=[["13,44,34","31,90,65","80,154,110",.6],["17,56,42","36,112,76","110,180,126",.8],["22,70,50","46,128,86","132,200,140",.95]],bl=[],M=14;
+for(let i=0;i<Math.min(Math.floor(W/7),110);i++){const lay=Math.random()*3|0,len=H*R(.3,.98),k=CL[lay],g=x.createLinearGradient(0,H+6,0,H+6-len);
+g.addColorStop(0,`rgba(${k[0]},${k[3]})`);g.addColorStop(.5,`rgba(${k[1]},${k[3]})`);g.addColorStop(1,`rgba(${k[2]},${k[3]*.85})`);
+bl.push({lay,len,g,bx:R(-8,W+8),w0:R(6,16),ph:R(0,6.3),sp:R(.5,1.1),amp:R(10,26)*(.5+len/H),lean:R(-14,14)})}
+bl.sort((a,b)=>a.lay-b.lay);
+function f(ts){if(!c.isConnected)return;const t=RM?0:ts/1000;x.clearRect(0,0,W,H);
+for(const b of bl){const L=[],Q=[];for(let j=0;j<=M;j++){const s=j/M,d=b.amp*Math.pow(s,1.5)*Math.sin(t*b.sp+b.ph-s*3.2)+(b.lean+7*Math.sin(t*.3))*s*s,y=H+6-s*b.len,w=b.w0*(1-Math.pow(s,1.5)*.9)*(1+.2*Math.sin(s*13+b.ph));L.push([b.bx+d-w/2,y]);Q.push([b.bx+d+w/2,y])}
+x.beginPath();for(const p of L)x.lineTo(p[0],p[1]);for(let j=M;j>=0;j--)x.lineTo(Q[j][0],Q[j][1]);x.closePath();x.fillStyle=b.g;x.fill()}
+requestAnimationFrame(f)}requestAnimationFrame(f)}
+const foot=h=>`<div class="sea"><div class="seabed"><canvas class="kc"></canvas></div><div class="fbar">© Solyra · Hikâyeler okyanusta yüzer<button class="btn" onclick="toast('Yönetici paneli sonraki aşamada eklenecek')">Yönetici girişi</button></div></div>`;
+const nav=()=>`<nav><b onclick="location.hash='home'">SOLYRA</b><button class="btn" onclick="kit()">Kitaplık</button></nav>`;
+function kit(){const f=()=>$("#shelf")&&$("#shelf").scrollIntoView({behavior:"smooth"});if(location.hash.length>5)location.hash="home",setTimeout(f,RM?0:1100);else f()}
+function home(){app.innerHTML=`${nav()}<div class="hero" style="position:relative"><div class="logo">S</div><h1 class="ser">Solyra</h1><p class="sub">Hikâyelerin okyanusuna hoş geldin</p><p class="bio">Merhaba, ben Solyra. Burası kitaplarımın ve karakterlerimin yaşadığı sakin ve derin bir okyanus. Kısa biyografim ve yazarlık anlayışım burada yer alacak.</p><div class="tags"><span>Fantastik</span><span>Macera</span><span>Dram</span></div></div>
+<div class="sec"><h2>Duyurular</h2>${ANN.map(a=>`<div class="card">${a}</div>`).join("")}</div>
+<div class="sec" style="margin-top:30px"><div class="shelfbg" id="shelf" style="position:relative"><h2>Kitaplarım</h2><div class="shelf">${B.map(b=>`<div class="bk" onclick="location.hash='book-${b.id}'"><div class="cover" style="background:${g(b.c)}">${b.t}</div><small><span class="st">${b.s}</span> ${b.g}</small></div>`).join("")}</div></div></div>${foot(1)}`}
+function book(id){const b=B.find(x=>x.id==id),ps=b.p.map((p,i)=>p.o?`<div class="card ch" onclick="location.hash='read-${id}-${i}'"><span class="n">${i+1}</span><span>${p.t}</span></div>`:"").join("");
+app.innerHTML=`${nav()}<div class="sec"><button class="back" onclick="location.hash='home'">← Ana sayfa</button>
+<div style="display:flex;gap:16px;align-items:flex-end"><div class="cover" style="width:120px;flex:none;background:${g(b.c)}">${b.t}</div><div><h1 style="margin:0;font-size:36px">${b.t}</h1><span class="st">${b.s}</span> ${b.g}</div></div>
+<p>${b.d}</p>${b.ch.length?`<h2>Karakterler</h2><div class="chars">${b.ch.map(c=>`<div class="fc" onclick="this.classList.toggle('on')"><div class="fi"><div class="fa" style="background:${g(c.c)}"><span class="m">${c.n[0]}</span>${c.n}</div><div class="fb"><b>${c.n}</b><br>Yaş: ${c.a}<br>Kişilik: ${c.k}<br>Rol: ${c.r}</div></div></div>`).join("")}</div>`:""}
+<h2>Bölümler</h2>${ps||`<div class="empty">Bu kitabın bölümleri yakında burada olacak.</div>`}</div>${foot()}`}
+function read(id,i){const b=B.find(x=>x.id==id),p=b.p[i],k=id+"-"+i;CM[k]=CM[k]||[];window.K=k;
+const ff=S.serif?'"Cormorant Garamond",Georgia,serif':"Nunito,sans-serif";
+app.innerHTML=`${nav()}<div class="sec"><button class="back" onclick="location.hash='book-${id}'">← ${b.t}</button><h2 style="margin-top:4px">${i+1}. ${p.t}</h2>
+<div class="bar"><button class="btn" onclick="st('size',-1)">A−</button><button class="btn" onclick="st('size',1)">A+</button><button class="btn" onclick="st('lh',.2)">Satır aralığı</button><button class="btn" onclick="st('f')">Yazı tipi</button><button class="btn" onclick="lk('${k}')">${LK[k]?"♥":"♡"} Beğen</button></div>
+<div class="rd"><div id="txt" style="font:${S.size}px/${S.lh} ${ff}">${p.x.map(t=>`<p>${t}</p>`).join("")}</div></div>
+<p style="color:var(--mu);font-size:13px">Bir cümleyi seç, o kısma özel yorum bırak.</p>
+<h2>Yorumlar</h2>${CM[k].map(c=>`<div class="card"><div class="q">“${esc(c.q)}”</div>${esc(c.m)}</div>`).join("")||`<div class="empty">İlk yorumu sen yaz.</div>`}</div>`}
+function st(a,v){if(a=="f")S.serif=!S.serif;else if(a=="lh")S.lh=S.lh>=2.2?1.5:S.lh+v;else S.size=Math.min(30,Math.max(14,S.size+v));route()}
+function lk(k){LK[k]=!LK[k];route()}
+function route(){const h=location.hash.slice(1).split("-");document.body.className=h[0]=="read"?"read":h[0]=="book"?"":"home";$("#sel").style.display="none";
+if(h[0]=="book")book(h[1]);else if(h[0]=="read")read(h[1],+h[2]);else home();kelpStart()}
+function go(){scrollTo(0,0);if(RM){route();return}const w=$("#wv");w.classList.remove("on");void w.offsetWidth;w.classList.add("on");setTimeout(route,450)}
+addEventListener("hashchange",go);route();
+setTimeout(()=>{const l=$("#ld");l.style.opacity=0;setTimeout(()=>l.remove(),750)},RM?100:1200);
+const fx=$("#fx");let h="";
+for(let i=0;i<14;i++){const z=R(5,16);h+=`<span class="bb" style="left:${R(0,100)}%;width:${z}px;height:${z}px;animation-duration:${R(16,30)}s;animation-delay:-${R(0,24)}s"></span>`}
+for(let i=0;i<9;i++){const w=R(36,120);h+=`<div class="fsh${Math.random()<.5?" r":""}" style="top:${R(8,80)}%;width:${w}px;opacity:${(.3+w/190).toFixed(2)};animation-duration:${R(26,60)+(130-w)*.3}s;animation-delay:-${R(0,60)}s;--t:${R(.6,1.1).toFixed(2)}s;${Math.random()<.3?"filter:hue-rotate(170deg) saturate(1.3)":""}"><div class="fb2" style="animation-duration:${R(4,7)}s">${FISH}</div></div>`}
+fx.innerHTML=h;
+const TC=$("#tc"),tx=TC.getContext("2d"),TL=[];let raf=0,TW,TH;
+function tsz(){const d=Math.min(devicePixelRatio||1,2);TW=innerWidth;TH=innerHeight;TC.width=TW*d;TC.height=TH*d;tx.setTransform(d,0,0,d,0,0)}tsz();addEventListener("resize",tsz);
+function tent(){if(RM||!document.body.classList.contains("home")||TL.length>1)return;const m=Math.random(),e=m<.38?"r":m<.76?"l":"b";
+TL.push({t0:performance.now(),dur:R(8,13)*1000,len:R(.32,.62)*Math.max(TW,TH),r0:R(13,22),A:R(.3,.7),k:R(3,6.5),w:R(1.1,2.4),ph:R(0,6.3),curl:R(.8,2.2)*(Math.random()<.5?-1:1),
+x:e=="r"?TW+30:e=="l"?-30:R(.1,.9)*TW,y:e=="b"?TH+30:R(.25,.85)*TH,a:(e=="r"?Math.PI:e=="l"?0:-Math.PI/2)+R(-.5,.5)});
+if(!raf)raf=requestAnimationFrame(tdraw)}
+function tdraw(now){tx.clearRect(0,0,TW,TH);if(!document.body.classList.contains("home"))TL.length=0;const sec=now/1000;
+for(let n=TL.length-1;n>=0;n--){const o=TL[n],p=(now-o.t0)/o.dur;if(p>=1){TL.splice(n,1);continue}
+const vis=Math.max(.03,p<.3?Math.sin(p/.3*Math.PI/2):p>.7?Math.sin((1-p)/.3*Math.PI/2):1),M=72,L=o.len*vis/M;let x=o.x,y=o.y,a=o.a+.12*Math.sin(sec*.9+o.ph);
+for(let i=0;i<M;i++){const s=i/M;a+=o.A*.12*Math.sin(o.k*s-sec*o.w+o.ph)*(.4+s)+o.curl*.04*Math.max(0,(s-.55)/.45);x+=Math.cos(a)*L;y+=Math.sin(a)*L;
+const r=o.r0*Math.pow(1-s,1.15)*(.5+.5*vis)+1.4;tx.fillStyle=`rgb(${60+s*100|0},${30+s*55|0},${44+s*62|0})`;tx.beginPath();tx.arc(x,y,r,0,6.3);tx.fill();
+tx.fillStyle="rgba(255,255,255,.07)";tx.beginPath();tx.arc(x-r*.25,y-r*.3,r*.55,0,6.3);tx.fill();
+if(i%4==1&&r>4){tx.fillStyle="rgba(236,202,202,.8)";tx.beginPath();tx.arc(x-Math.sin(a)*r*.55,y+Math.cos(a)*r*.55,r*.27,0,6.3);tx.fill()}}}
+raf=TL.length?requestAnimationFrame(tdraw):0;if(!raf)tx.clearRect(0,0,TW,TH)}
+function nxt(){setTimeout(()=>{tent();if(Math.random()<.3)setTimeout(tent,R(1500,4500));nxt()},R(7000,24000))}
+setTimeout(tent,5000);nxt();
+let lt=0;function drop(x,y,b){if(RM||document.body.classList.contains("read"))return;const d=document.createElement("i");d.className="dr"+(b?" b":"");d.style.left=x+"px";d.style.top=y+"px";document.body.appendChild(d);setTimeout(()=>d.remove(),800)}
+addEventListener("pointermove",e=>{if(e.pointerType=="mouse"&&Date.now()-lt>80){lt=Date.now();drop(e.clientX,e.clientY)}});
+addEventListener("pointerdown",e=>drop(e.clientX,e.clientY,1));
+document.addEventListener("selectionchange",()=>{const s=getSelection(),t=$("#txt");if(!t||s.isCollapsed||!t.contains(s.anchorNode))return;const x=s.toString().trim();if(x){q=x;$("#sq").textContent="“"+x.slice(0,140)+"”";$("#sel").style.display="block"}});
+$("#sx").onclick=()=>$("#sel").style.display="none";
+$("#sg").onclick=()=>{const m=$("#si").value.trim();if(!m||!q)return;CM[window.K].push({q,m});$("#si").value="";q="";const y=scrollY;route();scrollTo(0,y);toast("Yorum eklendi")};
+</script></body></html>
